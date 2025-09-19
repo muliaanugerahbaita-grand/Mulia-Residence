@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Undangan Online - Grand Launching Mulia Residence</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #4a4a4a;
+      background-image: url('https://i.pinimg.com/736x/37/f8/00/37f80057fad0ad55d3083c6bd0e9c14d.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: scroll; /* lebih ringan di HP */
+    }
+    .playfair { font-family: 'Playfair Display', serif; }
+    .text-gold { color: #d4af37; }
+    .bg-gold-gradient { background-image: linear-gradient(to right, #d4af37, #f0e68c); }
+    .btn-shadow {
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
+    }
+    .gold-border { border: 2px solid #d4af37; }
+    .countdown-box {
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      width: 70px; height: 70px; background-color: #fff; border-radius: 12px;
+      border: 1px solid #d4af37; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease-in-out;
+    }
+    .countdown-box:hover { transform: translateY(-5px); }
+    .countdown-number { font-size: 1.5rem; font-weight: 700; color: #d4af37; }
+    .content-container { background-color: rgba(255,255,255,0.85); }
+/* Animasi fade in */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-in {
+  opacity: 0;
+  animation: fadeIn 1s ease-out forwards;
+}
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+  </style>
+</head>
+<body class="antialiased leading-relaxed">
+  <div class="relative min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="content-container rounded-3xl shadow-2xl overflow-hidden max-w-lg w-full transform transition-all duration-500 hover:scale-[1.01] flex-grow">
+<!-- Cover Section -->
+<div id="coverSection" class="relative text-center p-8 md:p-12 h-screen flex flex-col justify-center items-center">
+  <!-- Background with blend mode -->
+  <div class="absolute inset-0 bg-cover bg-center"
+      style="background-image: url('https://i.pinimg.com/736x/75/e2/5d/75e25d6bfa7406461f78e78940ebb71e.jpg');
+               background-blend-mode: overlay;
+               filter: brightness(0.85);">
+  </div>
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+
+  <div class="relative z-10 text-white">
+    <img src="https://i.imgur.com/r4U1SuB.png" alt="Mulia Residence Logo" class="mx-auto mb-4 w-40 h-auto animate-fade-in">
+    <h1 class="text-3xl md:text-5xl playfair font-bold tracking-wider mb-2 animate-fade-in">Mulia Residence</h1>
+    <p class="text-xl md:text-3xl playfair font-bold mb-4 animate-fade-in delay-100">GRAND LAUNCHING</p>
+    <p class="text-base md:text-lg mb-8 animate-fade-in delay-200">Minggu, 05 Oktober 2025</p>
+    <button id="openInvitationBtn" class="bg-gold-gradient text-black font-semibold py-3 px-8 rounded-full shadow-lg hover:shadow-xl transform hover:scale-105 transition duration-300 ease-in-out animate-fade-in delay-300">
+      Buka Undangan
+    </button>
+  </div>
+</div>
+
+<!-- Main Invitation Section -->
+<div id="mainInvitation" class="p-8 md:p-12 hidden">
+  <div class="text-center mb-10">
+    <h2 class="text-xl md:text-2xl playfair font-semibold mb-2 text-gold">Mulia Residence</h2>
+    <h1 class="text-4xl md:text-5xl playfair font-bold tracking-tight mb-4">GRAND LAUNCHING</h1>
+    <p class="text-sm md:text-base italic max-w-sm mx-auto">"Hunian nyaman, modern, dan penuh keberkahan untuk keluarga tercinta."</p>
+  </div>
+
+  <div class="mb-8">
+    <p class="text-center text-lg mb-2">Kami Mengundang Anda untuk menghadiri acara</p>
+    <p class="text-center text-2xl font-semibold mb-4 text-gold">Grand Launching Mulia Residence!</p>
+  </div>
+
+  <!-- Countdown -->
+  <div class="flex justify-center items-center space-x-4 mb-8">
+    <div class="countdown-box">
+      <span id="days" class="countdown-number">00</span>
+      <span class="text-xs font-semibold">Hari</span>
+    </div>
+    <div class="countdown-box">
+      <span id="hours" class="countdown-number">00</span>
+      <span class="text-xs font-semibold">Jam</span>
+    </div>
+    <div class="countdown-box">
+      <span id="minutes" class="countdown-number">00</span>
+      <span class="text-xs font-semibold">Menit</span>
+    </div>
+    <div class="countdown-box">
+      <span id="seconds" class="countdown-number">00</span>
+      <span class="text-xs font-semibold">Detik</span>
+    </div>
+  </div>
+
+  <!-- Event Details -->
+  <div class="mb-8 p-6 gold-border rounded-xl">
+    <div class="flex items-center mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 9h14a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V11a2 2 0 012-2z" />
+      </svg>
+      <div>
+        <p class="text-sm font-semibold">Tanggal</p>
+        <p class="text-lg">Minggu, 05 Oktober 2025</p>
+      </div>
+    </div>
+    <div class="flex items-center mb-4">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <div>
+        <p class="text-sm font-semibold">Waktu</p>
+        <p class="text-lg">09:00 WIB - Selesai</p>
+      </div>
+    </div>
+    <div class="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+      </svg>
+      <div>
+        <p class="text-sm font-semibold">Lokasi</p>
+        <p class="text-lg">Kantor Pemasaran Mulia Residence</p>
+        <p class="text-sm text-gray-500">Ds. Pulorejo, Kec. Ngoro, Kab. Jombang, Jawa Timur</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="flex flex-col space-y-4 mb-8">
+    <a href="https://maps.app.goo.gl/rDQwmrGXmJ29tUYu7" target="_blank" class="bg-blue-600 text-white text-center py-3 px-6 rounded-full font-semibold btn-shadow transform hover:scale-105 transition duration-300">Buka di Google Maps</a>
+  </div>
+
+  <!-- RSVP Form -->
+  <div class="bg-gray-50 p-6 md:p-8 rounded-xl gold-border">
+    <h3 class="text-xl md:text-2xl font-bold mb-4 text-center">Konfirmasi Kehadiran</h3>
+    <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdAC6x--aEPvhVqzx5qT9CqyCOkql9zBb-zJfQY5CFTo8xEag/viewform?embedded=true" width="100%" height="600" class="min-h-[500px] md:h-[800px]" frameborder="0" marginheight="0" marginwidth="0">Memuat…</iframe>
+  </div>
+
+  <!-- Image Section -->
+  <div class="w-full mt-8 md:mt-12">
+    <img src="https://i.imgur.com/Su73HKM.png" alt="Foto perumahan Mulia Residence" class="w-full h-auto rounded-xl shadow-xl">
+  </div>
+</div>
+</div>
+
+<!-- Music Player - Hidden initially -->
+<div id="audioPlayerContainer" class="fixed bottom-4 right-4 z-50 hidden">
+  <button id="audioControlBtn" class="bg-white text-black p-3 rounded-full shadow-lg border border-gray-200">
+    <svg id="playIcon" class="w-6 h-6 text-gray-800" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+    <svg id="pauseIcon" class="w-6 h-6 text-gray-800 hidden" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zM7 8a1 1 0 012 0v4a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v4a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"></path></svg>
+  </button>
+  <audio id="invitationAudio" loop>
+    <!-- Ganti 'musik_undangan.mp3' dengan nama file musik Anda -->
+    <source src="musik_undangan.mp3" type="audio/mpeg">
+    Browser Anda tidak mendukung elemen audio.
+  </audio>
+</div>
+
+<script>
+    const coverSection = document.getElementById('coverSection');
+    const mainInvitation = document.getElementById('mainInvitation');
+    const openInvitationBtn = document.getElementById('openInvitationBtn');
+    const audioPlayerContainer = document.getElementById('audioPlayerContainer');
+    const audioControlBtn = document.getElementById('audioControlBtn');
+    const invitationAudio = document.getElementById('invitationAudio');
+    const playIcon = document.getElementById('playIcon');
+    const pauseIcon = document.getElementById('pauseIcon');
+
+    const daysSpan = document.getElementById('days');
+    const hoursSpan = document.getElementById('hours');
+    const minutesSpan = document.getElementById('minutes');
+    const secondsSpan = document.getElementById('seconds');
+
+    const eventDate = new Date("October 5, 2025 09:00:00").getTime();
+
+    function pad(num) {
+      return num < 10 ? "0" + num : num;
+    }
+
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = eventDate - now;
+
+      if (distance < 0) {
+        clearInterval(countdownInterval);
+        document.querySelector('.flex.justify-center.items-center.space-x-4').innerHTML =
+          '<p class="text-xl text-gold font-bold">Acara sedang berlangsung!</p>';
+        return;
+      }
+
+      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+      daysSpan.textContent = pad(days);
+      hoursSpan.textContent = pad(hours);
+      minutesSpan.textContent = pad(minutes);
+      secondsSpan.textContent = pad(seconds);
+    }
+
+    updateCountdown();
+    const countdownInterval = setInterval(updateCountdown, 1000);
+
+    openInvitationBtn.addEventListener('click', () => {
+      coverSection.classList.add('hidden');
+      mainInvitation.classList.remove('hidden');
+      audioPlayerContainer.classList.remove('hidden');
+      invitationAudio.play().catch(error => console.error("Autoplay was prevented:", error));
+      playIcon.classList.add('hidden');
+      pauseIcon.classList.remove('hidden');
+    });
+
+    audioControlBtn.addEventListener('click', () => {
+      if (invitationAudio.paused) {
+        invitationAudio.play();
+        playIcon.classList.add('hidden');
+        pauseIcon.classList.remove('hidden');
+      } else {
+        invitationAudio.pause();
+        playIcon.classList.remove('hidden');
+        pauseIcon.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
